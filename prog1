@@ -1,0 +1,41 @@
+using System;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } }; 
+        int row, column; 
+        
+        Console.Write("Введите номер строки: ");
+        row = int.Parse(Console.ReadLine());
+
+        Console.Write("Введите номер столбца: ");
+        column = int.Parse(Console.ReadLine());
+
+        int value = GetValue(matrix, row, column);
+
+        if (value != -1)
+        {
+            Console.WriteLine($"Значение элемента [{row}, {column}]: {value}");
+        }
+        else
+        {
+            Console.WriteLine($"Элемент с позицией [{row}, {column}] не существует");
+        }
+    }
+
+    public static int GetValue(int[,] matrix, int row, int column)
+    {
+        int rows = matrix.GetLength(0);
+        int columns = matrix.GetLength(1);
+
+        if (row >= 0 && row < rows && column >= 0 && column < columns)
+        {
+            return matrix[row, column];
+        }
+
+        return -1;
+    }
+}
+

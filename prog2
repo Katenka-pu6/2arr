@@ -1,0 +1,38 @@
+using System;
+
+public class Program
+{
+    public static void Main(string[] args)
+    {
+        int[,] matrix = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+
+        Console.WriteLine("Исходный массив:");
+        PrintMatrix(matrix);
+
+        int rows = matrix.GetLength(0);
+        int columns = matrix.GetLength(1);
+        for (int i = 0; i < columns; i++)
+        {
+            int temp = matrix[0, i];
+            matrix[0, i] = matrix[rows - 1, i];
+            matrix[rows - 1, i] = temp;
+        }
+
+        Console.WriteLine("Массив после замены строк:");
+        PrintMatrix(matrix);
+    }
+
+    public static void PrintMatrix(int[,] matrix)
+    {
+        int rows = matrix.GetLength(0);
+        int columns = matrix.GetLength(1);
+        for (int i = 0; i < rows; i++)
+        {
+            for (int j = 0; j < columns; j++)
+            {
+                Console.Write($"{matrix[i, j]} ");
+            }
+            Console.WriteLine();
+        }
+    }
+}
